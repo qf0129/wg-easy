@@ -30,6 +30,9 @@ COPY --from=build_node_modules /app /app
 # than what runs inside of docker.
 RUN mv /app/node_modules /node_modules
 
+RUN npm config set registry https://registry.npm.taobao.org
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
+
 # Enable this to run `npm run serve`
 RUN npm i -g nodemon
 
