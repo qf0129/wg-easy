@@ -111,7 +111,7 @@ PostDown = ${WG_POST_DOWN}
 [Peer]
 PublicKey = ${client.publicKey}
 PresharedKey = ${client.preSharedKey}
-AllowedIPs = ${client.address}/32`;
+AllowedIPs = ${client.allowedIPs || (client.address + '/32')}`;
     }
 
     debug('Config saving...');
@@ -255,6 +255,7 @@ Endpoint = ${WG_HOST}:${WG_PORT}`;
       privateKey,
       publicKey,
       preSharedKey,
+      allowedIPs,
 
       createdAt: new Date(),
       updatedAt: new Date(),
